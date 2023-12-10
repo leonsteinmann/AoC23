@@ -91,5 +91,5 @@ def solve2():
     
     print(f"Solution for day {day} part two: \n\n{output}")
 
-#solve()
+solve()
 solve2()
