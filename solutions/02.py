@@ -53,9 +53,38 @@ def solve():
         
         if inValidGame == False:
             output += game['game_id']
-        print(game, inValidGame)
 
     print(f"Solution for day {day}: \n\n{output}")
 
+
+def solve2():
+    input = get_input(day)
+    output = 0
+    parsed_games = parse_games(input)
+
+
+    for game in parsed_games:
+        maxDict = {}
+        for subset in game['subsets']:
+            if 'red' in subset:
+                if 'red' not in maxDict or subset['red'] > maxDict['red']:
+                    maxDict['red'] = subset['red']
+            if 'green' in subset:
+                if 'green' not in maxDict or subset['green'] > maxDict['green']:
+                    maxDict['green'] = subset['green']
+            if 'blue' in subset:
+                if 'blue' not in maxDict or subset['blue'] > maxDict['blue']:
+                    maxDict['blue'] = subset['blue']
+
+        # add to the output the product of maxDict values
+        product = 1
+        for key in maxDict:
+            product *= maxDict[key]
+        output += product
+    
+
+    print(f"Solution for day {day} part 2: \n\n{output}")
+
 solve()
+solve2()
 
