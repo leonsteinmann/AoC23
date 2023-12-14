@@ -54,7 +54,6 @@ directionToPositionChange = {
 }
 
 
-
 def solve():
     input = get_input(day)
     output = 0
@@ -83,7 +82,6 @@ def solve():
     while sCounter < 2:
         steps += 1
         currentPos = (currentPos[0] + directionToPositionChange[newDirection][0], currentPos[1] + directionToPositionChange[newDirection][1])
-        print(currentPos)
         if input[currentPos[0]][currentPos[1]] == 'S':
             break
         oldDirection = newToOldDirection[newDirection]
@@ -91,8 +89,9 @@ def solve():
         
     # output is half of the steps taken
     # +1 because we dont actually start at the starting position but at the next position
-    output = (steps+1)/2        
+    output = int((steps+1)/2)        
     
     print(f"Solution for day {day} part 1: {output}")
+
 
 solve()
